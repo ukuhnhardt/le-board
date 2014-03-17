@@ -1,0 +1,33 @@
+<atlassian-plugin key="${project.groupId}.${project.artifactId}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="leboard"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="leboard-resources" name="leboard Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="leboard.css" location="/css/leboard.css"/>
+        <resource type="download" name="leboard.js" location="/js/leboard.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>leboard</context>
+    </web-resource>
+    
+
+    <!--BUNDLED BOARDS -->
+    <adhoc-board key="le-board-swot" name="Le SWOT Analysis" format="json"><![CDATA[
+        {"type":"LABEL","row":[{"column":[{"container":[{"key":"strength","caption":"Le Strengths","style":"s026"}]},{"container":[{"key":"weakness","caption":"Le Weaknesses","style":"s029"}]}]},{"column":[{"container":[{"key":"opportunity","caption":"Les Opportunities","style":"s025"}]},{"container":[{"key":"threat","caption":"Les Threats","style":"s027"}]}]}],"name":"Le SWOT Analysis","matchHeight":true,"description":"[SWOT analysis|http://en.wikipedia.org/wiki/SWOT_analysis] is a strategic planning method used to evaluate the Strengths, Weaknesses, Opportunities, and Threats.","cardsOnlyBoard":true}
+    ]]></adhoc-board>
+
+    <!-- import from the product container -->
+    <component-import key="applicationProperties" interface="com.atlassian.sal.api.ApplicationProperties" />
+    
+</atlassian-plugin>
